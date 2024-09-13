@@ -1,10 +1,18 @@
 package com.example.aquarium.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
+import javax.management.relation.Role;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString(exclude = {"userDetails", "rol"})
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,6 +27,17 @@ public class User {
 
     @Column(name = "password", nullable = false, length = 100)
     private String password;
+
+    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Product> products;
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id", nullable = false)
+    private Roles rol;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_detail_id")
+    private UserDetails userDetails;
 
 
 }

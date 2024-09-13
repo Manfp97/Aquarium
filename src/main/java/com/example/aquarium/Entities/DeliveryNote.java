@@ -1,13 +1,19 @@
 package com.example.aquarium.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.Set;
 
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "deliverynote")
 public class DeliveryNote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,4 +28,7 @@ public class DeliveryNote {
 
     @Column(name = "finishingdate")
     private Date finishingdate;
+
+    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Product> products;
 }

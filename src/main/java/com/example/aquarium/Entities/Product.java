@@ -11,8 +11,8 @@ import java.text.DecimalFormat;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "idproduct", nullable = false)
+    private Integer idproduct;
 
     @Column(name = "name")
     private String name;
@@ -20,8 +20,22 @@ public class Product {
     @Column(name = "price")
     private DecimalFormat price;
 
+    @Column(name = "category")
+    private String category;
+
     @Column(name = "type")
     private String type;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idproductdelivered", foreignKey = @ForeignKey(name = "Fk_product_delivery_note"))
+    private Product delivered;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "iduser", foreignKey = @ForeignKey(name = "Fk_user_product"))
+    private User productuser;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_shop_product"))
+    private Shop productshop;
 
 }
