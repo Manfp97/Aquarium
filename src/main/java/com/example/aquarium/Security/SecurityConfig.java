@@ -3,6 +3,7 @@ package com.example.aquarium.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -44,7 +45,40 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(crsf -> crsf.disable())
                 .authorizeRequests(authorize -> authorize
-                        .requestMatchers())
+                        .requestMatchers("/js/**", "/img/**", "/css/**", "/fonts/**", "/static/lib/**", "/static/scss/**", "/chats/**").permitAll()
+                        .requestMatchers("/login", "/crearusuario", "/auth/reset-password", "/auth/forgot-password", "/usuario/nuevo").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/producto/list").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.GET, "/producto/nuevo").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.POST, "/producto/nuevo").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.POST, "/producto/**").hasRole("ADMIN")
+                        .requestMatchers("/carrito/**").permitAll() // Permitir todas las solicitudes a /carrito/**
+                        .requestMatchers("/index/**").permitAll() // Permitir todas las solicitudes a /index/**
+                        .requestMatchers("/").permitAll() // Permitir todas las solicitudes a /
+                        .requestMatchers("/progresionesEntrenamientos/**").authenticated() // Añade esta línea
+                        .requestMatchers(HttpMethod.POST, "/carrito/agregar/**").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/dietaUsuario/list").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.GET, "/dietaUsuario/nuevo").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.POST, "/dietaUsuario/nuevo").hasAnyRole("ADMIN", "EMPLEADO")
+                        .requestMatchers(HttpMethod.POST, "/dietaUsuario/**").hasRole("ADMIN")
+                        .requestMatchers("/usuario/perfil/**").permitAll()
+                        .requestMatchers("/ws/**", "/chat/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+
+                .formLogin(form -> form.
+                        loginPage("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                );
+
+        return http.build();
+
     }
 
     @Bean
@@ -60,6 +94,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    static GrantedAuthorityDefaults grantedAuthorityDefaults() {return new GrantedAuthorityDefaults("ROLE_");}
+    static GrantedAuthorityDefaults grantedAuthorityDefaults() {
+        return new GrantedAuthorityDefaults("ROLE_");
+    }
 
 }

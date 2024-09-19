@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import javax.management.relation.Role;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -27,6 +28,15 @@ public class User {
 
     @Column(name = "password", nullable = false, length = 100)
     private String password;
+
+    @Column(name = "active")
+    private boolean active = true;
+
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    @Column(name = "token_expiration")
+    private LocalDateTime tokenExpiration;
 
     @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Product> products;

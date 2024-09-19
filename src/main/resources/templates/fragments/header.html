@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout/layout}" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFP Aquarium, the sea lovers Mecca</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header th:fragment="header">
+    <div class="top-bar d-none d-lg-block ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-start">
+                    <small><i class="fas fa-map-marker-alt me-2"></i> Larios Street, Málaga</small>
+                    <small class="ms-4"><i class="fas fa-envelope me-2"></i>info@mfpaquarium.com</small>
+                </div>
+                <div class="col-lg-6 text-end">
+                    <small>Follow us:</small>
+                    <a class="text-dark ms-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="text-dark ms-3" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="text-dark ms-3" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="text-dark ms-3" href="https://github.com/Manfp97" ><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container d-flex justify-text-center">
+            <a th:href="@{/static}" class="navbar-brand">
+                <h1 class="m-0 text-primary text-center mx-auto" >MFP<span class="text-secondary">Aquariums</span></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toogle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/static}">About Us</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="@{/static}">Catalogue</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isSuthenticated()">
+                        <a class="nav-link" th:href="@{/static}">Species List</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
