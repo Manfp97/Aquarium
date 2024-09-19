@@ -44,7 +44,7 @@ public class ShopController {
                 .mapToDouble(pc -> pc.getProduct().getPrice() * pc.getQuantity())
                 .sum();
 
-        model.addAttribute(("shop", shop.values());
+        model.addAttribute("shop", shop.values());
         model.addAttribute("shopTotal", shopTotal);
 
         return "shop";
@@ -52,13 +52,23 @@ public class ShopController {
     }
 
     @PostMapping("/add/{idProduct}")
-    public String addProductToShop(@PathVariable int idProduct, HttpServletRequest request, Model model) throws JsonProcessingException {
+    public String addProductToShop(@PathVariable Integer idProduct, HttpServletRequest request, HttpServletRequest response) throws JsonProcessingException {
         Product product = productServi.findById(idProduct)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found"));
         Map<Integer, ProductShop> shop = obtainCookiesshop(request);
-        shop.remove(idProduct);
-        keepShopinCookies
+
+        if (shop.containsKey(idProduct)) {
+            shop.get(idProduct).increaseQuantity();
+        } else {
+            shop.put(idProduct, new ProductShop(product, 1));
+        }
+
+        keepShopinCookies(shop, response);
+        return "redirect:/shop";
+
+
     }
+
 
     private Map<Integer, ProductShop> obtainCookiesshop(HttpServletRequest request) throws JsonProcessingException {
         Cookie[] cookies = request.getCookies();

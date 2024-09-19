@@ -28,6 +28,9 @@ public class Fish {
     @Column(name = "numberindivs")
     private int numberindivs;
 
+    @Column(name = "description")
+    private String description;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "Fk_fish_tank"))
     private Tank tank;
