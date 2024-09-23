@@ -6,6 +6,7 @@ import com.example.aquarium.Entities.UserDetails;
 import com.example.aquarium.Repositories.ProductRepository;
 import com.example.aquarium.Repositories.RolesRepository;
 import com.example.aquarium.Repositories.UserRepository;
+import com.example.aquarium.Service.NotificationServiceEmail;
 import com.example.aquarium.Service.ProductServi;
 import com.example.aquarium.Service.RolesServi;
 import com.example.aquarium.Service.UserServi;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,10 +36,19 @@ public class UserController {
 
     @Autowired
     private ProductServi productServi;
+
     @Autowired
     private RolesServi rolesServi;
+
     @Autowired
     private RolesRepository rolesRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+
+    private NotificationServiceEmail notificationServiceEmail;
 
     @GetMapping("/perfil/{id}")
     public String showProfileById(@PathVariable Integer id, Model model) {
@@ -152,7 +163,7 @@ public class UserController {
             }
 
             if (user.getUserDetails() != null) {
-                UserDetails userDetails = existingUser.setUserDetails(;
+                UserDetails userDetails = existingUser.getUserDetails();
                 if (userDetails == null) {
                     userDetails = new UserDetails();
                     userDetails.setUser(existingUser);
@@ -178,6 +189,7 @@ public class UserController {
             return "redirect:/user/list";
         } catch (EntityNotFoundException e) {
             model.addAttribute("message", "User not found");
+            return "redirect:/user/list";
         } catch (Exception e) {
             model.addAttribute("message", "Error updating user");
             return "redirect:/user/list";

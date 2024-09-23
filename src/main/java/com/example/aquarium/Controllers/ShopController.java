@@ -36,6 +36,7 @@ public class ShopController {
     private final String SHOP_COOKIE_NAME = "shop";
 
 
+    /**
     @GetMapping
     public String showShop(HttpServletRequest request, Model model) throws JsonProcessingException {
         Map<Integer, ProductShop> shop = obtainCookiesshop(request);
@@ -50,6 +51,7 @@ public class ShopController {
         return "shop";
 
     }
+
 
     @PostMapping("/add/{idProduct}")
     public String addProductToShop(@PathVariable Integer idProduct, HttpServletRequest request, HttpServletRequest response) throws JsonProcessingException {
@@ -68,7 +70,7 @@ public class ShopController {
 
 
     }
-
+**/
 
     private Map<Integer, ProductShop> obtainCookiesshop(HttpServletRequest request) throws JsonProcessingException {
         Cookie[] cookies = request.getCookies();
@@ -96,7 +98,7 @@ public class ShopController {
         return new HashMap<>();
     }
 
-
+/**
     private void keepShopinCookies(Map<Integer, ProductShop> shop, HttpServletRequest response) throws JsonProcessingException {
         try {
             String shopJson = objectMapper.writeValueAsString(shop);
@@ -109,6 +111,7 @@ public class ShopController {
             throw new RuntimeException("Error coding the cookie value", e);
         }
     }
+ **/
 
     public static class ProductShop {
         private Product product;

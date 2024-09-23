@@ -22,8 +22,8 @@ public class Employee {
     private int age;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_employee_product"))
-    private Shop shop;
+    @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_employee_shop"))
+    private Shop idshop;
 
     @OneToMany(mappedBy = "idtank", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Tank> tanks;
