@@ -19,11 +19,9 @@ public class Shop {
 
     @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Product> products;
-/*
+
     @OneToMany(mappedBy = "idemployee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Employee> employees;
-
- */
 
 }
 
