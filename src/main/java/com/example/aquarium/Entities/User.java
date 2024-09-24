@@ -35,8 +35,8 @@ public class User {
     @Column(name = "token_expiration")
     private LocalDateTime tokenExpiration;
 
-    //@OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //private Set<Product> products;
+    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Product> products;
 
     @ManyToOne
     @JoinColumn(name = "rol_id", nullable = false)
