@@ -35,11 +35,9 @@ public class Fish {
 
     @Column(name = "descripcion")
     private String description;
-/*
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "idfish"))
     private Tank tank;
-
- */
 
 }
