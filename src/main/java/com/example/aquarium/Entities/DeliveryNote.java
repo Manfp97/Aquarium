@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "deliverynote")
 public class DeliveryNote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -29,6 +29,6 @@ public class DeliveryNote {
     @Column(name = "finishingdate")
     private Date finishingdate;
 
-    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Product> products;
+    //@OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //private Set<Product> products;
 }

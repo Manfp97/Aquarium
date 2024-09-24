@@ -14,11 +14,11 @@ import lombok.Setter;
 public class Fish {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idfish", nullable = false)
     private Integer idfish;
 
-    @Column(name = "name")
+    @Column(name = "nombre")
     private String name;
 
     @Column(name = "scientificname")
@@ -33,11 +33,13 @@ public class Fish {
     @Column(name = "numberindivs")
     private int numberindivs;
 
-    @Column(name = "description")
+    @Column(name = "descripcion")
     private String description;
-
+/*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "idfish"))
     private Tank tank;
+
+ */
 
 }

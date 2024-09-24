@@ -3,6 +3,7 @@ package com.example.aquarium.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,7 +16,7 @@ import java.util.Set;
 public class Roles {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idroles", nullable = false)
     private Integer idroles;
 
@@ -24,5 +25,5 @@ public class Roles {
 
     @OneToMany(mappedBy = "rol")
     @ToString.Exclude
-    private Set<User> users;
+    private Set<User> users = new HashSet<>();
 }

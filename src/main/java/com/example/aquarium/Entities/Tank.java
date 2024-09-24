@@ -14,14 +14,14 @@ import java.text.DecimalFormat;
 @Table(name = "tank")
 public class Tank {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idtank", nullable = false)
     private Integer idtank;
 
     @Column(name = "size")
     private DecimalFormat size;
 
-    @Column(name = "category")
+    @Column(name = "categoria")
     private String category;
 
     public Tank(Integer idtank, DecimalFormat size,

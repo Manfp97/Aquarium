@@ -17,7 +17,7 @@ public class UserDetails {
     @Column(name = "iduserdetails", nullable = false)
     private Integer iduserdetails;
 
-    @Column(name = "name", nullable = false, length = 250)
+    @Column(name = "nombre", nullable = false, length = 250)
     private String name;
 
     @Column(name = "surname", nullable = false, length = 500)
@@ -34,4 +34,5 @@ public class UserDetails {
 
     @OneToOne(mappedBy = "userDetails")
     private User user;
+
 }

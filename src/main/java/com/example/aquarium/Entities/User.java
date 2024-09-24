@@ -13,10 +13,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = {"userDetails", "rol"})
-@Table(name = "user")
+@Table(name = "usuarios")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
@@ -35,16 +35,15 @@ public class User {
     @Column(name = "token_expiration")
     private LocalDateTime tokenExpiration;
 
-    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<Product> products;
+    //@OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    //private Set<Product> products;
 
     @ManyToOne
     @JoinColumn(name = "rol_id", nullable = false)
     private Roles rol;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_detail_id")
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @JoinColumn(name = "user_detail_id", referencedColumnName = "iduserdetails")
     private UserDetails userDetails;
-
 
 }
