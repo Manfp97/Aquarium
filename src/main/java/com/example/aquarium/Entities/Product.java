@@ -30,11 +30,11 @@ public class Product {
 
     @Column(name = "tipo")
     private String type;
-/*
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idproductdelivered", foreignKey = @ForeignKey(name = "Fk_product_delivery_note"))
     private Product delivered;
-*/
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "iduser", foreignKey = @ForeignKey(name = "Fk_user_product"))
     private User productuser;

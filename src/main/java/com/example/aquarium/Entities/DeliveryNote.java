@@ -29,6 +29,6 @@ public class DeliveryNote {
     @Column(name = "finishingdate")
     private Date finishingdate;
 
-    //@OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //private Set<Product> products;
+    @OneToMany(mappedBy = "idproduct", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Product> products;
 }
