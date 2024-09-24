@@ -27,8 +27,8 @@ public class Employee {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_employee_shop"))
     private Shop idshop;
-/*
+
     @OneToMany(mappedBy = "idtank", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Tank> tanks;
-     */
+
 }
