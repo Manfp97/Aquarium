@@ -143,14 +143,6 @@
 			</exclusions>
 		</dependency>
 
-
-		<dependency>
-			<groupId>org.testcontainers</groupId>
-			<artifactId>mysql</artifactId>
-			<version>1.18.0</version> <!-- Usa la versión más reciente -->
-			<scope>test</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-compress</artifactId>

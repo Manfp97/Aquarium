@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Development" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" value="Development" />
+    <option name="DEBUG_MODE" value="true" />
+    <module name="demo" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.aquarium.AquariumApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

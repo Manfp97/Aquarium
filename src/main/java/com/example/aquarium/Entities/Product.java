@@ -2,12 +2,17 @@ package com.example.aquarium.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.text.DecimalFormat;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "product")
+@NoArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

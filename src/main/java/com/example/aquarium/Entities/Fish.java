@@ -2,10 +2,15 @@ package com.example.aquarium.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
 @Table(name = "fish")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Fish {
 
     @Id
@@ -32,7 +37,7 @@ public class Fish {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "Fk_fish_tank"))
+    @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "idfish"))
     private Tank tank;
 
 }
