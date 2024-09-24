@@ -38,9 +38,9 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "iduser", foreignKey = @ForeignKey(name = "Fk_user_product"))
     private User productuser;
-/*
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_shop_product"))
     private Shop productshop;
-*/
+
 }
