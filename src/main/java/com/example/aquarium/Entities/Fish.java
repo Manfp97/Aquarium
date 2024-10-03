@@ -1,7 +1,6 @@
 package com.example.aquarium.Entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +17,7 @@ public class Fish {
     @Column(name = "idfish", nullable = false)
     private Integer idfish;
 
-    @Column(name = "nombre")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "scientificname")
@@ -39,5 +38,15 @@ public class Fish {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "idfish"))
     private Tank tank;
+
+
+    public Fish(String name, String scientificname, String habitat, String sex, int numberindivs, String description, Tank tank) {
+        this.name = name;
+        this.scientificname = scientificname;
+        this.habitat = habitat;
+        this.sex = sex;
+        this.numberindivs = numberindivs;
+        this.description = description;
+    }
 
 }

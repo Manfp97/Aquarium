@@ -42,8 +42,8 @@ public class User {
     @JoinColumn(name = "rol_id", nullable = false)
     private Roles rol;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "user_detail_id", referencedColumnName = "iduserdetails")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_detail_id")
     private UserDetails userDetails;
 
 }

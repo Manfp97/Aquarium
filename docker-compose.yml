@@ -22,7 +22,7 @@ services:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
     environment:
       SPRING_APPLICATION_JSON: '{ 
-        "spring.profiles.active" : "desarrollo"
+        "spring.profiles.active" : "Development"
       }'
     volumes:
       - .m2:/root/.m2
