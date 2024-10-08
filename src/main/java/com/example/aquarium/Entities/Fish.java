@@ -1,6 +1,7 @@
 package com.example.aquarium.Entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,10 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Fish {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idfish", nullable = false)
     private Integer idfish;
 
@@ -35,18 +37,22 @@ public class Fish {
     @Column(name = "descripcion")
     private String description;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idtank", foreignKey = @ForeignKey(name = "idfish"))
     private Tank tank;
 
+public Fish(Integer idfish, String name, String scientificname,
+            String habitat, String sex, int numberindivs, String description) {
+    this.idfish = idfish;
+    this.name = name;
+    this.scientificname = scientificname;
+    this.habitat = habitat;
+    this.sex = sex;
+    this.numberindivs = numberindivs;
+    this.description = description;
+}
 
-    public Fish(String name, String scientificname, String habitat, String sex, int numberindivs, String description, Tank tank) {
-        this.name = name;
-        this.scientificname = scientificname;
-        this.habitat = habitat;
-        this.sex = sex;
-        this.numberindivs = numberindivs;
-        this.description = description;
-    }
+
 
 }

@@ -1,9 +1,6 @@
 package com.example.aquarium.Configuration;
 
-import com.example.aquarium.Entities.Fish;
-import com.example.aquarium.Entities.Roles;
-import com.example.aquarium.Entities.User;
-import com.example.aquarium.Entities.UserDetails;
+import com.example.aquarium.Entities.*;
 import com.example.aquarium.Repositories.*;
 import jakarta.annotation.Nullable;
 import org.hibernate.cfg.Environment;
@@ -118,15 +115,42 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     public void altaFish() {
         List<Fish> fish = new ArrayList<>();
 
-       //* fish.add(new Fish(
-                //"lamprey",
-                //"Petromyzon marinus",
-                //"Atlantic ocean",
-                //"male",
-              //  "5",
-            //    "Larvae live under the mud and once they grow up they become parasites, " +
-          //              "sticking to other fish, feeding on their blood and flesh"
-       //  ));
+        fish.add(new Fish(
+                1,
+                "lamprey",
+                "Petromyzon marinus",
+                "Atlantic ocean",
+                "male",
+                5,
+                "Larvae live under the mud and once they grow up they become parasites, " +
+                        "sticking to other fish, feeding on their blood and flesh"
+        ));
+
+        fish.add(new Fish(2,
+                "Smooth hammerhead",
+                "Sphyrna zygaena",
+                "All oceans",
+                "female",
+                5,
+                "Aggresive towards humans, "
+        ));
+    }
+
+    public void altaTanks() {
+        List<Tank> tanks = new ArrayList<>();
+
+        tanks.add(new Tank(
+                1,
+                2.5,
+                "small aquariums"
+        ));
+
+        tanks.add(new Tank(2, 5.5, "small aquariums"));
+        tanks.add(new Tank(3, 10.0, "small aquariums"));
+        tanks.add(new Tank(4, 15.0, "small aquariums"));
+        tanks.add(new Tank(5, 20.0, "mid-sized aquariums"));
+        tanks.add(new Tank(6, 20.0, "mid-sized aquariums"));
+
     }
 }
 

@@ -19,12 +19,12 @@ public class Tank {
     private Integer idtank;
 
     @Column(name = "size")
-    private DecimalFormat size;
+    private Double size;
 
     @Column(name = "categoria")
     private String category;
 
-    public Tank(Integer idtank, DecimalFormat size,
+    public Tank(Integer idtank, Double size,
                 String category) {
         this.size = size;
         this.idtank = idtank;
