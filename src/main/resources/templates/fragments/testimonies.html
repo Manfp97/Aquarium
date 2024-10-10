@@ -1,10 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<!-- Work with us -->
+<section class="work-with-us bg-white py-6" th:fragment="testimonies">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <h2 class="lead text-primary fw-bold mb-4">Join Our Team</h2>
+                <p class="lead text-primary mb-4">In MFPAquariums, we are looking for passionate workers who provide experience and new talents.</p>
+                <div class="d-flex align-items-center mb-4">
+                    <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle" style="width: 50px; height: 50px;">
+                        <i class="fas fa-chart-line text-white"></i>
+                    </div>
+                    <div class="ms-3">
+                        <h5 class="text-primary mb-0>">Professional growth</h5>
+                    </div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle" style="width: 50px; height: 50px;">
+                            <i class="fas fa-handshake text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-0">Collaborative environment</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.5s">
+                    <div class="bg-light p-5 rounded shadow-lg">
+                        <h3 class="fw-bold text-primary mb-4">Apply Now</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Full name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <select class="form-select" required>
+                                    <option value="" selected disabled>Select a position</option>
+                                    <option value="receptionist">Receptionist</option>
+                                    <option value="veterinary">Veterinary</option>
+                                    <option value="marketing">Digital Marketing</option>
+                                    <option value="humanresources">Human Resources</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Why do you want to join our team?" required></textarea>
+                                <small class="text-muted">Upload your CV(PDF, DOC, DOCX</small>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill py-3 animated pulse">
+                                <i class="fas fa-paper-plane me-2"></i>Send Application
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Work with us end -->

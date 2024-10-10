@@ -23,7 +23,7 @@ public class Product {
     private String name;
 
     @Column(name = "price")
-    private DecimalFormat price;
+    private Double price;
 
     @Column(name = "categoria")
     private String category;
@@ -42,5 +42,15 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idshop", foreignKey = @ForeignKey(name = "Fk_shop_product"))
     private Shop productshop;
+
+    public Product(Integer idproduct, String name,
+                   Double price, String category, String type) {
+        this.idproduct = idproduct;
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.type = type;
+
+    }
 
 }

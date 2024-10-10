@@ -2,10 +2,9 @@ package com.example.aquarium.Configuration;
 
 import com.example.aquarium.Entities.*;
 import com.example.aquarium.Repositories.*;
-import jakarta.annotation.Nullable;
-import org.hibernate.cfg.Environment;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -29,7 +28,8 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private final ProductRepository productRepository;
     private final TankRepository tankRepository;
 
-    public ApplicationStartup(UserRepository userRepository, RolesRepository rolesRepository, Environment env, BCryptPasswordEncoder bCryptPasswordEncoder, DeliveryNoteRepository deliveryNoteRepository, FishRepository fishRepository, ShopRepository shopRepository, EmployeeRepository employeeRepository, ProductRepository productRepository, TankRepository tankRepository) {
+    public ApplicationStartup(UserRepository userRepository, RolesRepository rolesRepository,
+                              Environment env, BCryptPasswordEncoder bCryptPasswordEncoder, DeliveryNoteRepository deliveryNoteRepository, FishRepository fishRepository, ShopRepository shopRepository, EmployeeRepository employeeRepository, ProductRepository productRepository, TankRepository tankRepository) {
         this.userRepository = userRepository;
         this.rolesRepository = rolesRepository;
         this.env = env;
@@ -151,6 +151,28 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
         tanks.add(new Tank(5, 20.0, "mid-sized aquariums"));
         tanks.add(new Tank(6, 20.0, "mid-sized aquariums"));
 
+    }
+
+    public void altaEmployees() {
+        List<Employee> employees = new ArrayList<>();
+
+        employees.add(new Employee(
+                1,
+                "Manuel Fernández",
+                27
+        ));
+
+    }
+
+    public void altaProducts() {
+        List<Product> products = new ArrayList<>();
+        products.add(new Product(
+                1,
+                "Decoration algae",
+                5.5,
+                "Decoration items",
+                "fresh water"
+        ));
     }
 }
 

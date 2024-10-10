@@ -3,6 +3,7 @@ package com.example.aquarium.Entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "employee")
 public class Employee {
 
@@ -30,5 +32,11 @@ public class Employee {
 
     @OneToMany(mappedBy = "idtank", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Tank> tanks;
+
+    public Employee(int idemployee, String name, int age) {
+        this.idemployee = idemployee;
+        this.name = name;
+        this.age = age;
+    }
 
 }
